@@ -1,70 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1N8BillionXXL — The Ultimate Size Queen Fantasy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500&display=swap');
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: -0.03em; }
-        .luxury-bg { background: #0a0a0a; }
-        .gold-text { color: #D4AF37; }
-        video { width: 100%; height: 100%; object-fit: cover; }
-        .masonry { column-count: 1; column-gap: 1.5rem; }
-        @media (min-width: 768px) { .masonry { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry { column-count: 3; } }
-        .gallery-item { break-inside: avoid; margin-bottom: 1.5rem; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1N8BillionXXL — The Ultimate Size Queen Fantasy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Cinzel:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0b0907;
+    --ink:#15110c;
+    --gold:#c9a44c;
+    --gold-bright:#e8c873;
+    --wine:#3a0f0f;
+    --parchment:#ece3d3;
+    --muted:#9c9080;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--black);
+    color:var(--parchment);
+    font-family:'Inter',system-ui,sans-serif;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Cormorant Garamond',Georgia,serif;}
+  .display{
+    font-family:'Cinzel',serif;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  a{text-decoration:none;color:inherit;}
+
+  /* ---------- AGE GATE ---------- */
+  #gate{
+    position:fixed; inset:0; z-index:100;
+    background:radial-gradient(ellipse at center, #1a140c 0%, #050403 80%);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; text-align:center; padding:2rem;
+  }
+  #gate .crest{
+    width:64px;height:64px;margin-bottom:1.5rem;
+    border:1px solid var(--gold); border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold); font-size:1.4rem;
+  }
+  #gate h2{font-size:1.5rem; margin:0 0 .75rem; color:var(--gold-bright);}
+  #gate p{color:var(--muted); max-width:32ch; line-height:1.6; font-size:.95rem; margin:0 0 2rem;}
+  #gate .gate-actions{display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;}
+  .gate-btn{
+    padding:.85rem 2rem; border-radius:2px; font-size:.85rem;
+    letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+    border:1px solid var(--gold); background:transparent; color:var(--gold-bright);
+    transition:all .25s ease;
+  }
+  .gate-btn.enter{background:var(--gold); color:var(--black); border-color:var(--gold);}
+  .gate-btn:hover{transform:translateY(-1px);}
+  body.gated{overflow:hidden;}
+  body.gated #site{filter:blur(20px); pointer-events:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; filter:saturate(1.05) brightness(.85);
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 20%, transparent 0%, rgba(11,9,7,.4) 60%, rgba(11,9,7,.97) 100%),
+      linear-gradient(to bottom, rgba(11,9,7,.2) 0%, rgba(11,9,7,.55) 55%, rgba(11,9,7,.98) 100%);
+  }
+  .hero-inner{position:relative; z-index:2; text-align:center; padding:0 1.5rem; max-width:780px;}
+  .crown-mark{
+    width:46px; height:46px; margin:0 auto 2rem;
+    opacity:.9;
+  }
+  .eyebrow{
+    font-size:.7rem; letter-spacing:.35em; color:var(--gold);
+    margin-bottom:1.25rem; opacity:.85;
+  }
+  h1.title{
+    font-size:clamp(3rem, 9vw, 6.5rem);
+    line-height:.95; margin:0;
+    color:var(--gold-bright);
+    text-shadow:0 0 40px rgba(201,164,76,.25);
+  }
+  .tagline{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:clamp(1.3rem,2.6vw,1.9rem);
+    color:var(--parchment); margin:1.25rem 0 .5rem; opacity:.95;
+  }
+  .hook{
+    font-size:.95rem; color:var(--muted); letter-spacing:.04em;
+  }
+  .cta-row{
+    margin-top:3rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    padding:1.05rem 2.5rem; font-size:.85rem; letter-spacing:.1em;
+    text-transform:uppercase; border-radius:1px; cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:inline-flex; align-items:center; gap:.6rem;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--gold-bright),var(--gold)); color:var(--black); font-weight:600;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(201,164,76,.5);}
+  .btn-ghost{border:1px solid rgba(236,227,211,.35); color:var(--parchment);}
+  .btn-ghost:hover{border-color:var(--gold); background:rgba(201,164,76,.06);}
+  .scroll-cue{
+    position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+    z-index:2; color:var(--muted); font-size:.65rem; letter-spacing:.3em;
+    display:flex; flex-direction:column; align-items:center; gap:.6rem;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:linear-gradient(to bottom, var(--gold), transparent); animation:cue 2.2s ease-in-out infinite;}
+  @keyframes cue{0%,100%{opacity:.3} 50%{opacity:1}}
+
+  /* ---------- DIVIDER / NUMBER ---------- */
+  .ornament{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+    margin:0 auto 3.5rem; max-width:280px; color:var(--gold); opacity:.7;
+  }
+  .ornament .bar{height:1px; flex:1; background:linear-gradient(to right, transparent, var(--gold), transparent);}
+
+  /* ---------- INTRO STATEMENT ---------- */
+  .statement{
+    max-width:680px; margin:0 auto; padding:7rem 1.5rem 5rem; text-align:center;
+  }
+  .statement h2{
+    font-family:'Cormorant Garamond',serif; font-weight:500; font-style:italic;
+    font-size:clamp(1.6rem,3.4vw,2.3rem); line-height:1.5; color:var(--parchment); margin:0;
+  }
+  .statement h2 em{color:var(--gold-bright); font-style:normal;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-section{padding:2rem 1.5rem 7rem; max-width:1400px; margin:0 auto;}
+  .gallery-head{text-align:center; margin-bottom:3.5rem;}
+  .gallery-head .eyebrow{margin-bottom:.75rem;}
+  .gallery-head h3.display{font-size:clamp(2rem,4.5vw,3rem); color:var(--gold-bright); margin:0;}
+  .masonry{column-count:1; column-gap:1.25rem;}
+  @media (min-width:700px){.masonry{column-count:2;}}
+  @media (min-width:1100px){.masonry{column-count:3;}}
+  .gallery-item{
+    break-inside:avoid; margin-bottom:1.25rem; border-radius:4px; overflow:hidden;
+    position:relative; border:1px solid rgba(201,164,76,.15);
+  }
+  .gallery-item img, .gallery-item video{width:100%; display:block;}
+  .gallery-item .frame-glow{
+    position:absolute; inset:0; pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(201,164,76,0); transition:box-shadow .3s ease;
+  }
+  .gallery-item:hover .frame-glow{box-shadow:inset 0 0 0 1px rgba(201,164,76,.45);}
+  .gallery-empty{
+    border:1px dashed rgba(201,164,76,.3); border-radius:4px; padding:3rem 1.5rem;
+    text-align:center; color:var(--muted); font-size:.85rem; line-height:1.7;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid rgba(201,164,76,.15); padding:3.5rem 1.5rem 3rem;
+    text-align:center;
+  }
+  footer .display{font-size:.85rem; color:var(--gold); letter-spacing:.25em; margin-bottom:.75rem;}
+  footer p{color:var(--muted); font-size:.78rem; max-width:42ch; margin:.4rem auto; line-height:1.7;}
+  footer .legal-row{margin-top:1.5rem; display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;}
+  footer .legal-row a{font-size:.72rem; color:var(--muted); letter-spacing:.04em; border-bottom:1px solid transparent;}
+  footer .legal-row a:hover{color:var(--gold); border-color:var(--gold);}
+</style>
 </head>
-<body class="luxury-bg text-white overflow-x-hidden">
+<body class="gated">
+
+  <!-- AGE / CONSENT GATE -->
+  <div id="gate">
+    <div class="crest">♛</div>
+    <h2 class="display" style="font-size:1.1rem;">1N8BillionXXL</h2>
+    <p>This site contains content intended for adults only. By entering, you confirm you are 18 years of age or older and consent to viewing adult material under the laws of your location.</p>
+    <div class="gate-actions">
+      <a class="gate-btn enter" id="enterBtn">I am 18+ — Enter</a>
+      <a class="gate-btn" href="https://www.google.com">Exit</a>
+    </div>
+  </div>
+
+  <div id="site">
 
     <!-- HERO -->
-    <div class="relative h-screen flex items-center justify-center overflow-hidden">
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full">
-            <source src="_imagine-public_share-videos_80158b0b-91f0-4280-aea0-4aa033b82f2a_hd.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/95"></div>
-        
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto pt-10">
-            <!-- YOUR BEST CROWN LOGO -->
-            <img src="att.BH-TFeP3G5AtDpbPN1yZ01CraXjqOKASdzy7mYNf-7M.jpeg" 
-                 alt="1N8BillionXXL Crown Logo" 
-                 class="mx-auto mb-8 h-32 md:h-40 drop-shadow-2xl">
-            
-            <h1 class="heading-serif text-7xl md:text-[5.8rem] tracking-tighter gold-text">1N8BillionXXL</h1>
-            <p class="text-2xl md:text-3xl mt-2 text-amber-100">The Ultimate Size Queen Fantasy</p>
-            <p class="mt-4 text-lg text-zinc-300">"Her curves. Your obsession."</p>
-            
-            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#gallery" 
-                   class="px-12 py-5 bg-[#D4AF37] hover:bg-amber-400 active:scale-[0.985] text-black font-bold text-xl rounded-2xl transition-all">
-                    Enter the Throne Room
-                </a>
-                <a href="https://www.reddit.com/r/1N8BillionXXL/" target="_blank" 
-                   class="px-12 py-5 border-2 border-white/60 hover:bg-white/10 rounded-2xl text-xl transition-all flex items-center justify-center gap-3">
-                    <i class="fa-brands fa-reddit-alien text-2xl"></i> 
-                    Join on Reddit
-                </a>
-            </div>
+    <section class="hero">
+      <video autoplay loop muted playsinline>
+        <source src="REPLACE-WITH-YOUR-HERO-VIDEO.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-inner">
+        <div class="eyebrow">Est. The Throne Room</div>
+        <h1 class="title display">1N8BillionXXL</h1>
+        <p class="tagline">Her curves. Your obsession.</p>
+        <p class="hook">The Ultimate Size Queen Fantasy</p>
+
+        <div class="cta-row">
+          <a href="#gallery" class="btn btn-primary">Enter the Throne Room</a>
+         <a href="https://www.reddit.com/user/1N8BillionXXL/" target="_blank" class="btn btn-ghost">
+  Follow on Reddit
+</a>
         </div>
-    </div>
+      </div>
+
+      <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+    </section>
+
+    <!-- INTRO STATEMENT -->
+    <section class="statement">
+      <div class="ornament"><span class="bar"></span>♛<span class="bar"></span></div>
+      <h2>Some thrones are <em>inherited.</em><br>Hers was <em>built.</em></h2>
+    </section>
 
     <!-- GALLERY -->
-    <div id="gallery" class="max-w-screen-2xl mx-auto px-6 py-20">
-        <h2 class="heading-serif text-5xl text-center mb-12 gold-text">The Queen’s Realm</h2>
-        <div class="masonry">
-            <div class="gallery-item"><img src="IMG_9094.jpeg" class="w-full" alt="Queen"></div>
-            <div class="gallery-item"><img src="IMG_9095.jpeg" class="w-full" alt="Queen"></div>
-            <div class="gallery-item"><img src="IMG_9096.jpeg" class="w-full" alt="Queen"></div>
-            <!-- Add more of your queen photos here -->
-        </div>
-    </div>
+    <section id="gallery" class="gallery-section">
+      <div class="gallery-head">
+        <div class="eyebrow">The Queen's Realm</div>
+        <h3 class="display">Gallery</h3>
+      </div>
 
-    <footer class="text-center py-12 text-zinc-500 text-sm border-t border-zinc-800">
-        All models 18+. Pure fantasy. © 1N8BillionXXL
+      <div class="masonry">
+        <!--
+          Drop your own images/clips in here.
+          Each gallery-item wraps one piece of media.
+          Swap the src to your uploaded file names.
+        -->
+        <div class="gallery-item">
+          <img src="REPLACE-1.jpg" alt="">
+          <div class="frame-glow"></div>
+        </div>
+        <div class="gallery-item">
+          <img src="REPLACE-2.jpg" alt="">
+          <div class="frame-glow"></div>
+        </div>
+        <div class="gallery-item">
+          <img src="REPLACE-3.jpg" alt="">
+          <div class="frame-glow"></div>
+        </div>
+
+        <!-- Placeholder shown only until real media is added -->
+        <div class="gallery-item gallery-empty" id="emptyNotice">
+          More to come — the realm is still being built.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="display">1N8BillionXXL</div>
+      <p>All persons depicted are 18 years of age or older. This site and its content are intended for a mature, consenting adult audience.</p>
+      <p>© 1N8BillionXXL. All rights reserved.</p>
+      <div class="legal-row">
+        <a href="#">18 U.S.C. 2257 Statement</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Content Removal</a>
+      </div>
     </footer>
+
+  </div>
+
+  <script>
+    // Age gate logic — simple session-based, remembers choice per browser session
+    const gate = document.getElementById('gate');
+    const enterBtn = document.getElementById('enterBtn');
+
+    if (sessionStorage.getItem('ageVerified') === 'true') {
+      gate.style.display = 'none';
+      document.body.classList.remove('gated');
+    }
+
+    enterBtn.addEventListener('click', () => {
+      sessionStorage.setItem('ageVerified', 'true');
+      gate.style.display = 'none';
+      document.body.classList.remove('gated');
+    });
+  </script>
+
 </body>
 </html>
